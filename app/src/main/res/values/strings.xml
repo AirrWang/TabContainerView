@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MDTabContainerView</string>
+
+    <array name="titleArray">
+        <item>主页</item>
+        <item>工作</item>
+        <item>应用</item>
+        <item>我</item>
+    </array>
+
+    <array name="exampleOneArray">
+        <item>微信</item>
+        <item>通讯录</item>
+        <item>发现</item>
+        <item>我</item>
+    </array>
+</resources>
