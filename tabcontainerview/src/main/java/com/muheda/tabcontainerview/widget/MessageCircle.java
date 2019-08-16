@@ -17,40 +17,40 @@ import com.muheda.tabcontainerview.R;
 
 /**
  * Created by chenpengfei on 2016/5/20.
- *  消息提示小圆点
+ * 消息提示小圆点
  */
 public class MessageCircle extends View {
 
     /**
-     *  画笔
+     * 画笔
      */
     private Paint mPaint;
     /**
-     *  内容
+     * 内容
      */
     private String mText;
     /**
-     *  内容距离圆点边缘间距
+     * 内容距离圆点边缘间距
      */
     private int mTextSpacing;
     /**
-     *  字体大小
+     * 字体大小
      */
     private int mTextSize;
     /**
-     *  文字颜色
+     * 文字颜色
      */
     private int mTextColor;
     /**
-     *  圆点颜色
+     * 圆点颜色
      */
-    private int mCricleColor;
+    private int mCircleColor;
     /**
      * 圆角矩形的圆角度
      */
     private int mRoundRectR = 20;
     /**
-     *  内容绘制区域
+     * 内容绘制区域
      */
     private Rect mTextRect = new Rect();
 
@@ -64,7 +64,7 @@ public class MessageCircle extends View {
     }
 
     public MessageCircle(Context context, AttributeSet attrs, int defStyleAttr) {
-       super(context, attrs, defStyleAttr);
+        super(context, attrs, defStyleAttr);
         init(context, attrs);
     }
 
@@ -75,7 +75,7 @@ public class MessageCircle extends View {
     }
 
     public void setText(String text) {
-        if(text == null) text = "";
+        if (text == null) text = "";
         mText = text;
     }
 
@@ -88,20 +88,20 @@ public class MessageCircle extends View {
     }
 
     public void setCircleColor(int color) {
-        mCricleColor = color;
+        mCircleColor = color;
     }
 
     /**
-     *  解析样式
+     * 解析样式
      */
     private void init(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MessageCircleStyle);
         mText = typedArray.getString(R.styleable.MessageCircleStyle_text);
-        if(mText == null) mText = "";
+        if (mText == null) mText = "";
         mTextSpacing = typedArray.getDimensionPixelSize(R.styleable.MessageCircleStyle_textSpacing, 10);
         mTextSize = typedArray.getDimensionPixelSize(R.styleable.MessageCircleStyle_messageTextSize, 24);
         mTextColor = typedArray.getColor(R.styleable.MessageCircleStyle_messageTextColor, Color.WHITE);
-        mCricleColor =  typedArray.getColor(R.styleable.MessageCircleStyle_cricleColor, Color.RED);
+        mCircleColor = typedArray.getColor(R.styleable.MessageCircleStyle_cricleColor, Color.RED);
         typedArray.recycle();
 
         mPaint = new Paint();
@@ -114,7 +114,7 @@ public class MessageCircle extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         mPaint.getTextBounds(mText, 0, mText.length(), mTextRect);
         int mWidth, mHeight;
-        if(mText.length() > 2) {
+        if (mText.length() > 2) {
             mWidth = mTextRect.width() + mTextSpacing;
             mHeight = mTextRect.height() + mTextSpacing;
         } else {
@@ -126,8 +126,8 @@ public class MessageCircle extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         //绘制圆点
-        mPaint.setColor(mCricleColor);
-        if(mText.length() > 2) {
+        mPaint.setColor(mCircleColor);
+        if (mText.length() > 2) {
             RectF rect = new RectF();
             rect.left = 0;
             rect.top = 0;
@@ -138,7 +138,7 @@ public class MessageCircle extends View {
             int mWidth = getWidth() / 2;
             canvas.drawCircle(mWidth, mWidth, mWidth, mPaint);
         }
-        if(TextUtils.isEmpty(mText)) return;
+        if (TextUtils.isEmpty(mText)) return;
         //绘制数字
         mPaint.setColor(mTextColor);
         //文字X轴移中心来设置距离左边的距离
